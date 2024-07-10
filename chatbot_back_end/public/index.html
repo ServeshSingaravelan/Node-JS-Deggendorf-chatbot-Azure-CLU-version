@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #chat { width: 1280px; margin: 720px auto; }
+        #messages { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
+        #message-form { display: flex; margin-top: 10px; }
+        #message-form input { flex: 1; padding: 10px; border: 1px solid #ccc; }
+        #message-form button { padding: 10px; border: 1px solid #ccc; background: #007BFF; color: white; }
+    </style>
+</head>
+<body>
+    <div id="chat">
+        <div id="messages"></div>
+        <form id="message-form">
+            <input id="message-input" type="text" placeholder="Type in 'Hello' to start!">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        
+        const socket = io();
+
+        const messages = document.getElementById('messages');
+        const form = document.getElementById('message-form');
+        const input = document.getElementById('message-input');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const message = input.value;
+            if (message) {
+                socket.emit('message', message);
+                input.value = '';
+                addMessage(`You: ${message}`, 'user');
+            }
+        });
+
+        socket.on('response', (data) => {
+            addMessage(`Bot: ${data.text}`, 'bot');
+        });
+
+        socket.on('clear', () => {
+            setTimeout(clearChatbotPage, 3000);
+        });
+
+        function addMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.textContent = message;
+            messages.appendChild(messageElement);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function clearChatbotPage() {
+            messages.innerHTML = ''; //clear
+        }
+    </script>
+</body>
+</html>

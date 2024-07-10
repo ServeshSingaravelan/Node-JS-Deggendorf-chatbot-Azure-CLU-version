@@ -1,0 +1,116 @@
+body {
+  font-family: Arial, sans-serif;
+  background: url('deggendorf.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #121212;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: #ffffff;
+}
+
+#chat-container {
+  width: 1200px; 
+  margin: auto;
+  text-align: center;
+  background-color: transparent;
+}
+
+#chat {
+  background-color: rgba(30, 30, 30, 0.8);
+  border-radius: 8px;
+  padding: 10px 15px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+}
+
+#messages {
+  border-bottom: 1px solid #333;
+  padding: 20px;
+  height: 400px;
+  overflow-y: scroll;
+  background-color: rgba(38, 38, 38, 0.8);
+}
+
+#message-form {
+  display: flex;
+  padding: 10px;
+  background-color: rgba(51, 51, 51, 0.8);
+  border-top: 1px solid #444;
+}
+
+#message-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  margin-right: 10px;
+  background-color: rgba(30, 30, 30, 0.8);
+  color: #ffffff;
+}
+
+#message-form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#message-form button:hover {
+  background: #0056b3;
+}
+
+.message-container {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.message-container.user {
+  justify-content: flex-end;
+}
+
+.message-container.bot {
+  justify-content: flex-start;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 20px;
+  width: 90%; 
+  word-wrap: break-word;
+  background-color: rgba(68, 68, 68, 0.8);
+}
+
+.message.user {
+  background-color: rgba(30, 136, 223, 0.8);
+  width: 40%
+}
+
+.message.bot {
+  background-color: rgba(207, 143, 192, 0.8);
+  width: 90%
+}
+
+.message-icon {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.message-text {
+  color: #ffffff;
+}
+
+.description {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #ffffff;
+}
