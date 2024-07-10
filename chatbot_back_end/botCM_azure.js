@@ -33,7 +33,7 @@ const previousIntent = {};
 
 //get intent from the message using Azure CLU
 async function getIntent(message) {
-    const url = 'https://inttechchatbot.cognitiveservices.azure.com/language/:analyze-conversations?api-version=2022-10-01-preview';
+    const url = 'your CLU resource url';
     const headers = {
         'Ocp-Apim-Subscription-Key': azureApiKey,
         'Content-Type': 'application/json'
